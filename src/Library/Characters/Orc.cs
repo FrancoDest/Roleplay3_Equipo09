@@ -7,6 +7,8 @@ namespace RoleplayGame
         public Orc(string name)
         {
             this.Name = name;
+
+            this.AddItem(new Axe());
         }
         public override int VP
         {
