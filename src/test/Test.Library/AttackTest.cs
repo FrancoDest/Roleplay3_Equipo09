@@ -5,11 +5,11 @@ namespace Test.Library
 {
     public class TestAtaque
     {
-        private ICharacters archerTest;
-        private ICharacters knightTest;
-        private ICharacters dwarfTest;
-        private IEquipment armorTest;
-        private IEquipment axeTest;
+        private ICharacter archerTest;
+        private ICharacter knightTest;
+        private ICharacter dwarfTest;
+        private IItem armorTest;
+        private IItem axeTest;
 
         [SetUp]
         public void Setup()
@@ -43,7 +43,7 @@ namespace Test.Library
         public void DamagevsDefense0()
         {
             int expecteddamage = 0;
-            knightTest.Equip(axeTest);
+            knightTest.AddItem(axeTest);
             if (knightTest.AttackValue - archerTest.DefenseValue > 0)
             {
                 expecteddamage = knightTest.AttackValue - archerTest.DefenseValue;
@@ -62,7 +62,7 @@ namespace Test.Library
         public void Damage0vsDefense()
         {
             int expecteddamage = 0;
-            archerTest.Equip(armorTest);
+            archerTest.AddItem(armorTest);
             if (knightTest.AttackValue - archerTest.DefenseValue > 0)
             {
                 expecteddamage = knightTest.AttackValue - archerTest.DefenseValue;
@@ -81,8 +81,8 @@ namespace Test.Library
         public void DamagevsDefense()
         {
             int expecteddamage = 0;
-            archerTest.Equip(armorTest);
-            knightTest.Equip(axeTest);
+            archerTest.AddItem(armorTest);
+            knightTest.AddItem(axeTest);
             if (knightTest.AttackValue - archerTest.DefenseValue > 0)
             {
                 expecteddamage = knightTest.AttackValue - archerTest.DefenseValue;
