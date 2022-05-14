@@ -8,7 +8,7 @@ namespace Test.Library
         private ICharacter archerTest;
         private ICharacter knightTest;
         private ICharacter dwarfTest;
-        private IMagicCharacter wizardTest;
+        private ICharacter wizardTest;
         private Armor armorTest;
         private Staff staffTest;
         private Axe axeTest;
