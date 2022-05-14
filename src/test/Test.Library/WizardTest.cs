@@ -14,10 +14,10 @@ namespace Test.Library
         private Wizard wizardTest;
         private Staff staffTest;
         private SpellsBook spellsBookTest;
-        private Spell spellTest1;
-        private Spell spellTest2;
-        private Spell spellTest3;
-        private Spell spellTest4;
+        private SpellOne spellTest1;
+        private SpellOne spellTest2;
+        private SpellOne spellTest3;
+        private SpellOne spellTest4;
         private Dwarf dwarfTest;
         private Armor armorTest;
         private Axe axeTest;
@@ -29,10 +29,10 @@ namespace Test.Library
             wizardTest = new Wizard("Richy");
             staffTest = new Staff();
             spellsBookTest = new SpellsBook();
-            spellTest1 = new Spell();
-            spellTest2 = new Spell();
-            spellTest3 = new Spell();
-            spellTest4 = new Spell();
+            spellTest1 = new SpellOne();
+            spellTest2 = new SpellOne();
+            spellTest3 = new SpellOne();
+            spellTest4 = new SpellOne();
             dwarfTest = new Dwarf("Thomas");
             armorTest = new Armor();
             axeTest = new Axe();
@@ -42,9 +42,12 @@ namespace Test.Library
         [Test]
         public void WizardEquipSpells()
         {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{spellTest1, spellTest2, spellTest3, spellTest4};
-            int expected = spellTest1.AttackValue + spellTest2.AttackValue + spellTest3.AttackValue + spellTest4.AttackValue;
+            int expected = wizardTest.AttackValue + spellTest1.AttackValue + spellTest2.AttackValue + spellTest3.AttackValue + spellTest4.AttackValue;
+            wizardTest.AddItem(spellsBookTest);
+            spellsBookTest.AddSpell(spellTest1);
+            spellsBookTest.AddSpell(spellTest2);
+            spellsBookTest.AddSpell(spellTest3);
+            spellsBookTest.AddSpell(spellTest4);
             Assert.AreEqual(expected, wizardTest.AttackValue);
         }
 
@@ -52,10 +55,10 @@ namespace Test.Library
         [Test]
         public void WizardDefenseSpells()
         {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            wizardTest.AddItem(spellsBookTest);
+            spellsBookTest.AddSpell(spellTest1);
             int expecteddamage = 0;
-            dwarfTest.Equip(axeTest);
+            dwarfTest.AddItem(axeTest);
             if (dwarfTest.AttackValue - wizardTest.DefenseValue > 0)
             {
                 expecteddamage = dwarfTest.AttackValue - wizardTest.DefenseValue;
@@ -71,10 +74,10 @@ namespace Test.Library
         [Test]
         public void WizardAttackSpells()
         {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{ new Spell() };
+            wizardTest.AddItem(spellsBookTest);
+            spellsBookTest.AddSpell(spellTest1);
             int expecteddamage = 0;
-            dwarfTest.Equip(armorTest);
+            dwarfTest.AddItem(armorTest);
             if (wizardTest.AttackValue - dwarfTest.DefenseValue > 0)
             {
                 expecteddamage = wizardTest.AttackValue - dwarfTest.DefenseValue;
@@ -90,11 +93,11 @@ namespace Test.Library
         [Test]
         public void WizardDefendWithStaff()
         {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{ new Spell() };
-            wizardTest.Equip(staffTest);
+            wizardTest.AddItem(spellsBookTest);
+            spellsBookTest.AddSpell(spellTest1);
+            wizardTest.AddItem(staffTest);
             int expecteddamage = 0;
-            dwarfTest.Equip(axeTest);
+            dwarfTest.AddItem(axeTest);
             if (dwarfTest.AttackValue - wizardTest.DefenseValue > 0)
             {
                 expecteddamage = dwarfTest.AttackValue - wizardTest.DefenseValue;
@@ -110,11 +113,11 @@ namespace Test.Library
         [Test]
         public void WizardAttackWithStaff()
         {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{};
-            wizardTest.Equip(staffTest);
+            wizardTest.AddItem(spellsBookTest);
+            spellsBookTest.AddSpell(spellTest1);
+            wizardTest.AddItem(staffTest);
             int expecteddamage = 0;
-            dwarfTest.Equip(armorTest);
+            dwarfTest.AddItem(armorTest);
             if (wizardTest.AttackValue - dwarfTest.DefenseValue > 0)
             {
                 expecteddamage = wizardTest.AttackValue - dwarfTest.DefenseValue;
@@ -130,11 +133,11 @@ namespace Test.Library
         [Test]
         public void WizardAttackWithAll()
         {
-            wizardTest.EquipSpellbook(spellsBookTest);
-            spellsBookTest.Spells = new Spell[]{ new Spell() };
-            wizardTest.Equip(staffTest);
+            wizardTest.AddItem(spellsBookTest);
+            spellsBookTest.AddSpell(spellTest1);
+            wizardTest.AddItem(staffTest);
             int expecteddamage = 0;
-            dwarfTest.Equip(armorTest);
+            dwarfTest.AddItem(armorTest);
             if (wizardTest.AttackValue - dwarfTest.DefenseValue > 0)
             {
                 expecteddamage = wizardTest.AttackValue - dwarfTest.DefenseValue;
@@ -157,7 +160,7 @@ namespace Test.Library
         public void WizardEquipStaffDefense()
         {
             int expected = wizardTest.DefenseValue + staffTest.DefenseValue;
-            wizardTest.Equip(staffTest);
+            wizardTest.AddItem(staffTest);
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
 
@@ -166,7 +169,7 @@ namespace Test.Library
         public void WizardEquipStaffAttack()
         {
             int expected = wizardTest.AttackValue + staffTest.AttackValue;
-            wizardTest.Equip(staffTest);
+            wizardTest.AddItem(staffTest);
             Assert.AreEqual(expected, wizardTest.AttackValue);  
         }
 
@@ -175,8 +178,8 @@ namespace Test.Library
         public void WizardUnequipStaffAttack()
         {
             int expected = wizardTest.AttackValue;
-            wizardTest.Equip(staffTest);
-            wizardTest.Unequip(staffTest);
+            wizardTest.AddItem(staffTest);
+            wizardTest.RemoveItem(staffTest);
             Assert.AreEqual(expected, wizardTest.AttackValue);
         }
 
@@ -185,8 +188,8 @@ namespace Test.Library
         public void WizardUnequipStaffDefense()
         {
             int expected = wizardTest.DefenseValue;
-            wizardTest.Equip(staffTest);
-            wizardTest.Unequip(staffTest);
+            wizardTest.AddItem(staffTest);
+            wizardTest.RemoveItem(staffTest);
             Assert.AreEqual(expected, wizardTest.DefenseValue);
         }
     }
