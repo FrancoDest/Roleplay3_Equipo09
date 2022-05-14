@@ -1,1 +1,3 @@
 sobrecarga de metodo add item (mago y character)
+Uso de Herencia multiple o como solucionar la clase Staff
+Se tiene que respetar el diagrama (Attack y Defense)(MagicalItem)?
