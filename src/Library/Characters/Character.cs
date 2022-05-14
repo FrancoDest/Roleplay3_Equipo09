@@ -6,6 +6,8 @@ namespace RoleplayGame
         public string Name { get; set; }
 
         protected int health = 100;
+        public virtual int VP {get;}
+        protected List<IItem> items = new List<IItem>();
         public int Health
         {
             get
@@ -49,7 +51,6 @@ namespace RoleplayGame
                 return value;
             }
         }
-        protected List<IItem> items = new List<IItem>();
 
         public void AddItem(IItem item)
         {
