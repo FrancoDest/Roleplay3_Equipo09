@@ -1,19 +1,19 @@
 namespace RoleplayGame
 {
-    public class Ghost : Enemy
+    public class Skeleton : Enemy
     {
-        public override int VP
+        protected override int VP
         {
             get 
             {
-                return 50;
+                return 21;
             }
         }
-        public Ghost (string name)
+        public Skeleton (string name)
         {
             this.Name = name;
             this.AddItem(new Sword());
-            this.AddItem(new Armor());
+            this.AddItem(new Helmet());
         }
         
     }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class DarkLord: Enemy
+    public class DarkLord : Enemy
     {
         public DarkLord(string name)
         {
@@ -12,7 +12,7 @@ namespace RoleplayGame
             this.AddItem(new Armor());
         }
 
-        public override int VP
+        protected override int VP
         {
             get
             {

@@ -1,18 +1,15 @@
 using System.Collections.Generic;
-
 namespace RoleplayGame
 {
-    public class Orc: Enemy
+    public class Dwarf: Hero 
     {
-        public Orc(string name)
+        public Dwarf(string name)
         {
             this.Name = name;
-
+            
             this.AddItem(new Axe());
+            this.AddItem(new Helmet());
         }
-        public override int VP
-        {
-            get {return 50;}
-        }
+
     }
 }
