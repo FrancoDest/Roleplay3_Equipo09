@@ -9,8 +9,9 @@ namespace RoleplayGame
                 return 21;
             }
         }
-        public Skeleton ()
+        public Skeleton (string name)
         {
+            this.Name = name;
             this.AddItem(new Sword());
             this.AddItem(new Helmet());
         }
