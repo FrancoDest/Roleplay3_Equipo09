@@ -10,7 +10,7 @@ namespace RoleplayGame
 
             this.AddItem(new Axe());
         }
-        protected override int VP
+        public override int VP
         {
             get {return 50;}
         }

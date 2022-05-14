@@ -2,7 +2,7 @@ namespace RoleplayGame
 {
     public class Skeleton : Enemy
     {
-        protected override int VP
+        public override int VP
         {
             get 
             {

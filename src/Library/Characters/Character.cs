@@ -6,7 +6,7 @@ namespace RoleplayGame
         public string Name { get; set; }
 
         protected int health = 100;
-        protected virtual int VP {get; set;}
+        public virtual int VP {get; protected set;}
         protected List<IItem> items = new List<IItem>();
         public int Health
         {

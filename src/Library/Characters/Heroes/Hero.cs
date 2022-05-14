@@ -2,7 +2,7 @@ namespace RoleplayGame
 {
     public abstract class Hero : Character
     {
-        protected override int VP {get;set;} = 0;
+        public override int VP {get; protected set;} = 0;
 
         public void AddVP(int vp)
         {

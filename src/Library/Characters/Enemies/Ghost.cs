@@ -2,7 +2,7 @@ namespace RoleplayGame
 {
     public class Ghost : Enemy
     {
-        protected override int VP
+        public override int VP
         {
             get 
             {

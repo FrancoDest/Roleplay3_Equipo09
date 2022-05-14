@@ -12,7 +12,7 @@ namespace RoleplayGame
             this.AddItem(new Armor());
         }
 
-        protected override int VP
+        public override int VP
         {
             get
             {
