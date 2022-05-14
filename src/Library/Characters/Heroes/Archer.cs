@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Dwarf: Character
+    public class Archer: Hero 
     {
-        public Dwarf(string name)
+        public Archer(string name)
         {
             this.Name = name;
             
-            this.AddItem(new Axe());
+            this.AddItem(new Bow());
             this.AddItem(new Helmet());
         }
-
     }
 }

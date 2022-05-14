@@ -6,7 +6,7 @@ namespace RoleplayGame
         public string Name { get; set; }
 
         protected int health = 100;
-        public virtual int VP {get;}
+        public virtual int VP {get; protected set;}
         protected List<IItem> items = new List<IItem>();
         public int Health
         {
@@ -14,7 +14,7 @@ namespace RoleplayGame
             {
                 return this.health;
             }
-            private set
+            protected set
             {
                 this.health = value < 0 ? 0 : value;
             }
@@ -67,11 +67,11 @@ namespace RoleplayGame
             this.Health = 100;
         }
 
-        public void ReceiveAttack(int power)
+        public virtual void ReceiveAttack(int power)
         {
             if (this.DefenseValue < power)
             {
-                this.Health -= power - this.DefenseValue;
+                this.health -= power - this.DefenseValue;
             }
         }
         

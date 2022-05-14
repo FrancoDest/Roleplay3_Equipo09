@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class DarkLord: Enemy
+    public class DarkLord : Enemy
     {
         public DarkLord(string name)
         {
