@@ -7,6 +7,8 @@ namespace RoleplayGame
         {
             this.Name = name;
             this.AddItem(new Sword());
+            this.AddItem(new Axe());
+            this.AddItem(new Bow());
             this.AddItem(new Shield());
             this.AddItem(new Helmet());
             this.AddItem(new Armor());
