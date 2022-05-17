@@ -1,8 +1,8 @@
 namespace RoleplayGame
 {
-    public class Shield: DefenseItem
+    public class Shield: IDefenseItem
     {
-        public override int DefenseValue
+        public int DefenseValue
         {
             get
             {
