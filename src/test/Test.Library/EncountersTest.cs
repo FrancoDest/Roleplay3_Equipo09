@@ -29,6 +29,10 @@ namespace Test.Library
             encounter = new Encounters();
         }
 
+        /*
+        Prueba que no se realicen ataques si solo se añade un heroe a las
+        listas de personaje de encuentros (sin ningun enemigo)
+        */
         [Test]
         public void OnlyHero()
         {
@@ -38,6 +42,10 @@ namespace Test.Library
             Assert.AreEqual(expected, archerTest.Health);
         }
 
+        /*
+        Prueba que no se realicen ataques si solo se añade un enemigo a las
+        listas de personaje de encuentros (sin ningun heroe)
+        */
         [Test]
         public void OnlyEnemy()
         {
@@ -47,6 +55,10 @@ namespace Test.Library
             Assert.AreEqual(expected, orcTest.Health);
         }
 
+        /*
+        Prueba que se realicen de manera correcta los ataques en un encuentro
+        cuando la cantidad de heroes y de enemigos son la misma
+        */
         [Test]
         public void Hero1Enemy1()
         {
@@ -57,43 +69,36 @@ namespace Test.Library
             Assert.AreEqual(0, orcTest.Health);
         }
 
+        /*
+        Prueba que se realicen de manera correcta los ataques en un encuentro
+        cuando la cantidad de heroes es mayor a la de enemigos
+        */
         [Test]
-                public void Hero2Enemy1()
-                {
-                    int expected = archerTest.Health;
-                    encounter.AddHero(archerTest);
-                    encounter.AddHero(knightTest);
-                    encounter.AddEnemy(orcTest);
-                    encounter.DoEncounter();
-                    Assert.AreEqual(expected, archerTest.Health);
-                }
+        public void Hero2Enemy1()
+        {
+            encounter.AddHero(archerTest);
+            encounter.AddHero(knightTest);
+            encounter.AddEnemy(orcTest);
+            encounter.DoEncounter();
+            Assert.AreEqual(79, archerTest.Health);
+            Assert.AreEqual(100, knightTest.Health);
+            Assert.AreEqual(0, orcTest.Health);
+        }
 
-                [Test]
-                public void Hero1Enemy2()
-                {
-                    int expected = archerTest.Health;
-                    encounter.AddHero(archerTest);
-                    encounter.AddEnemy(orcTest);
-                    encounter.AddEnemy(skeletonTest);
-                    encounter.DoEncounter();
-                    Assert.AreEqual(expected, archerTest.Health);
-                }
-
-                [Test]
-                public void Hero4Enemy4()
-                {
-                    int expected = archerTest.Health;
-                    encounter.AddHero(archerTest);
-                    encounter.AddHero(dwarfTest);
-                    encounter.AddHero(knightTest);
-                    encounter.AddHero(wizardTest);
-                    encounter.AddEnemy(darkLordTest);
-                    encounter.AddEnemy(ghostTest);
-                    encounter.AddEnemy(skeletonTest);
-                    encounter.AddEnemy(orcTest);
-                    encounter.DoEncounter();
-                    Assert.AreEqual(expected, archerTest.Health);
-                }
-
+        /*
+        Prueba que se realicen de manera correcta los ataques en un encuentro
+        cuando la cantidad de enemigos es mayor a la de heroes
+        */
+        [Test]
+        public void Hero1Enemy2()
+        {
+            encounter.AddHero(archerTest);
+            encounter.AddEnemy(orcTest);
+            encounter.AddEnemy(skeletonTest);
+            encounter.DoEncounter();
+            Assert.AreEqual(0, archerTest.Health);
+            Assert.AreEqual(0, orcTest.Health);
+            Assert.AreEqual(100, skeletonTest.Health);
+        }
     }
 }
