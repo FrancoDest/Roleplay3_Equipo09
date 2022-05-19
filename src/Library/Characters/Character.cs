@@ -8,6 +8,9 @@ namespace RoleplayGame
         protected int health = 100;
         public virtual int VP {get; protected set;}
         protected List<IItem> items = new List<IItem>();
+        // Lista de equipamiento
+
+        // Vida del personaje. Si el personaje esta muerto, su vida queda en 0.
         public int Health
         {
             get
@@ -20,6 +23,7 @@ namespace RoleplayGame
             }
         }
 
+        // Ataque del personaje. Se calcula como la suma del daño de todos sus items.
         public virtual int AttackValue
         {
             get
@@ -36,6 +40,7 @@ namespace RoleplayGame
             }
         }
 
+        // Defensa del personaje. Se calcula como la suma de la defensa de todos sus items.
         public virtual int DefenseValue
         {
             get
@@ -52,21 +57,28 @@ namespace RoleplayGame
             }
         }
 
+        // Añade items a la lista de items.
         public void AddItem(IItem item)
         {
             this.items.Add(item);
         }
 
+        // Remueve items de la lista de items.
         public void RemoveItem(IItem item)
         {
             this.items.Remove(item);
         }
 
+        // Cura al personaje. Curar implica asignarle la vida base del personaje.
         public void Cure()
         {
             this.Health = 100;
         }
 
+        /*
+        Recibe un ataque de otro personaje. Previo a modificar la vida, se bloquea el daño con la armadura
+        en caso de que sea mayor al poder del ataque, y se reduce en caso contrario.
+        */
         public virtual void ReceiveAttack(int power)
         {
             if (this.DefenseValue < power)
@@ -74,6 +86,5 @@ namespace RoleplayGame
                 this.Health -= power - this.DefenseValue;
             }
         }
-        
     }
 }

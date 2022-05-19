@@ -5,6 +5,9 @@ namespace RoleplayGame
     public abstract class MagicEnemy : Enemy
     {
         protected List<IMagicalItem> magicalItems = new List<IMagicalItem>();
+        // Lista de equipamiento (solo items magicos)
+        
+        // Aparte de sumar el valor de ataque de los items, tambien se suma el ataque de los items magicos.
         public override int AttackValue
         {
             get
@@ -27,6 +30,8 @@ namespace RoleplayGame
                 return value;
             }
         }
+
+        // Aparte de sumar el valor de defensa de los items, tambien se suma la defensa de los items magicos.
         public override int DefenseValue
         {
             get
@@ -49,10 +54,14 @@ namespace RoleplayGame
                 return value;
             }
         }
+
+        // Añade items a la lista de equipamiento de items magicos.
         public void AddItem(IMagicalItem item)
         {
             this.magicalItems.Add(item);
         }
+
+        // Remueve items de la lista de equipamiento de items magicos.
         public void RemoveItem(IMagicalItem item)
         {
             this.magicalItems.Remove(item);
