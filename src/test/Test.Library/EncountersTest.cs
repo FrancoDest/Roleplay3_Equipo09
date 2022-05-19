@@ -128,5 +128,51 @@ namespace Test.Library
             encounter.DoEncounter();
             Assert.AreEqual(100,dwarfTest.Health);
         }
+
+        //El objetivo del test es verificar si se eliminan de la lista los character luego de un encuentro
+        //En el encuentro Hero1Enemy1 dwarf termina con menos vida y el orc termina sin vida
+        //Si el hero que sigue con vida (por lo tanto sigue en la lista) se lo elimina de la misma al terminar el encuentro
+        //al agregar un enemy pero no un hero y llamar a DoEncounter nuevamente
+        //no habria hero en DoEncounter por lo cual la vida de los character no cambiaria ya que no hay batalla
+        [Test]
+        public void CleanListsTest()
+        {
+            encounter.AddHero(dwarfTest);
+            encounter.AddEnemy(orcTest);
+            encounter.DoEncounter();
+            encounter.AddEnemy(skeletonTest);
+            encounter.DoEncounter();
+            Assert.AreEqual(72, dwarfTest.Health);
+            Assert.AreEqual(100, skeletonTest.Health);
+        }
+
+        //El objetivo del test es verificar que se puedan hacer encuentros luego de haber terminado un encuentro
+        [Test]
+        public void DoTwoEncounterTest()
+        {
+            encounter.AddHero(dwarfTest);
+            encounter.AddEnemy(orcTest);
+            encounter.DoEncounter();
+            encounter.AddHero(knightTest);
+            encounter.AddEnemy(skeletonTest);
+            encounter.DoEncounter();
+            Assert.AreEqual(100, knightTest.Health);
+            Assert.AreEqual(0, skeletonTest.Health);
+        }
+
+        //El objetivo del test es verificar que un character utilizado en un encuentro anterior puede ser parte
+        //de un nuevo encuentro
+        [Test]
+        public void DoTwoEncounterTestWithTheSameCharacter()
+        {
+            encounter.AddHero(dwarfTest);
+            encounter.AddEnemy(orcTest);
+            encounter.DoEncounter();
+            encounter.AddHero(dwarfTest);
+            encounter.AddEnemy(skeletonTest);
+            encounter.DoEncounter();
+            Assert.AreEqual(42, dwarfTest.Health);
+            Assert.AreEqual(0, skeletonTest.Health);
+        }
     }
 }
