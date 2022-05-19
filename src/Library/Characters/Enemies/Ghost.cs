@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Ghost : Enemy
+    public class Ghost : MagicEnemy
     {
         public override int VP
         {
@@ -12,8 +12,7 @@ namespace RoleplayGame
         public Ghost (string name)
         {
             this.Name = name;
-            this.AddItem(new Sword());
-            this.AddItem(new Armor());
+            this.AddItem(new Staff());
         }
         
     }
