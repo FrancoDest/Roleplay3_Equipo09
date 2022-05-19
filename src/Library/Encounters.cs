@@ -80,11 +80,17 @@ namespace RoleplayGame
         }
         public void AddHero(Hero hero)
         {
+            if (hero.Health != 0)
+            {
             this.heroes.Add(hero);
+            }
         }
         public void AddEnemy(Enemy enemy)
         {
+            if (enemy.Health != 0)
+            {
             this.enemies.Add(enemy);
+            }
         }
         public void RemoveHero(Hero hero)
         {
