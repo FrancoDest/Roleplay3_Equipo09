@@ -113,6 +113,7 @@ namespace RoleplayGame
             }
 
             somebodyToFight = true;
+            //Vacía la lista para que en el proximo encuentro no se mantengan los asignados anteriormente
             this.CleanLists();
         }
         
