@@ -12,7 +12,7 @@ namespace RoleplayGame
         }
         public override int VP
         {
-            get {return 1;} //Es el VP (Punto de victoria) que otorga al que lo derrote.
+            get {return 3;} //Es el VP (Punto de victoria) que otorga al que lo derrote.
         }
     }
 }

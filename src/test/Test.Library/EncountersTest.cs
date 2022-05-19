@@ -12,6 +12,7 @@ namespace Test.Library
         private DarkLord darkLordTest;
         private Ghost ghostTest;
         private Orc orcTest;
+        private Orc orcTest2;
         private Skeleton skeletonTest;
         private Encounters encounter;
 
@@ -25,6 +26,7 @@ namespace Test.Library
             darkLordTest = new DarkLord("Samuel");
             ghostTest = new Ghost("Gonzalo");
             orcTest = new Orc("francisc");
+            orcTest2 = new Orc("francisc2");
             skeletonTest = new Skeleton("robert");
             encounter = new Encounters();
         }
@@ -62,10 +64,10 @@ namespace Test.Library
         [Test]
         public void Hero1Enemy1()
         {
-            encounter.AddHero(archerTest);
+            encounter.AddHero(dwarfTest);
             encounter.AddEnemy(orcTest);
             encounter.DoEncounter();
-            Assert.AreEqual(51, archerTest.Health);
+            Assert.AreEqual(72, dwarfTest.Health);
             Assert.AreEqual(0, orcTest.Health);
         }
 
@@ -99,6 +101,32 @@ namespace Test.Library
             Assert.AreEqual(0, archerTest.Health);
             Assert.AreEqual(0, orcTest.Health);
             Assert.AreEqual(100, skeletonTest.Health);
+        }
+
+        [Test]
+        public void Hero2Enemy2()
+        {
+            encounter.AddHero(archerTest);
+            encounter.AddHero(knightTest);
+            encounter.AddEnemy(orcTest);
+            encounter.AddEnemy(skeletonTest);
+            encounter.DoEncounter();
+            Assert.AreEqual(0, archerTest.Health);
+            Assert.AreEqual(100,knightTest.Health);
+            Assert.AreEqual(0, orcTest.Health);
+            Assert.AreEqual(0, skeletonTest.Health);
+        }
+
+        //Como demostramos en el test Hero1Enemy1 al luchar un enano contra un orco pierde vida
+        //Utilizamos este test para ver que si mata a dos orcos y sobrevive se cura
+        [Test]
+        public void VPAsignados()
+        {
+            encounter.AddHero(dwarfTest);
+            encounter.AddEnemy(orcTest);
+            encounter.AddEnemy(orcTest2);
+            encounter.DoEncounter();
+            Assert.AreEqual(100,dwarfTest.Health);
         }
     }
 }
