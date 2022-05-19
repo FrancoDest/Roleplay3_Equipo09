@@ -111,6 +111,9 @@ namespace RoleplayGame
                     heroes[i].Cure();
                 }
             }
+
+            somebodyToFight = true;
+            this.CleanLists();
         }
         
         // Vacia las listas de heroes y de enemigos
