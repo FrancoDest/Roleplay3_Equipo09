@@ -12,7 +12,7 @@ namespace RoleplayGame
         }
         public override int VP
         {
-            get {return 50;}
+            get {return 1;}
         }
     }
 }
