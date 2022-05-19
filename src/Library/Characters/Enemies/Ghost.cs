@@ -6,7 +6,7 @@ namespace RoleplayGame
         {
             get 
             {
-                return 50;
+                return 3;
             }
         }
         public Ghost (string name)

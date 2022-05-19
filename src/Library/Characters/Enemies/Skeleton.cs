@@ -6,7 +6,7 @@ namespace RoleplayGame
         {
             get 
             {
-                return 21;
+                return 2;
             }
         }
         public Skeleton (string name)
