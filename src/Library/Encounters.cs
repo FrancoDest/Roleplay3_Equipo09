@@ -30,7 +30,7 @@ namespace RoleplayGame
 
                     heroes[indexH].ReceiveAttack(enemies[indexE].AttackValue);
 
-                    if (heroes[indexH].Health <= 0)
+                    if (heroes[indexH].Health == 0)
                     {
                         heroes.RemoveAt(indexH);
                         VPheroes.Remove(indexH);
@@ -55,7 +55,7 @@ namespace RoleplayGame
                         indexE = 0;
                     }
                     enemies[indexE].ReceiveAttack(heroes[indexH].AttackValue, heroes[indexH]);
-                    if (enemies[indexE].Health <= 0)
+                    if (enemies[indexE].Health == 0)
                     {
                         enemies.RemoveAt(indexE);
                         indexE -= 1;
