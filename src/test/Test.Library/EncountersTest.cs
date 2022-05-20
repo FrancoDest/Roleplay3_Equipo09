@@ -42,7 +42,7 @@ namespace Test.Library
             skeletonTest = new Skeleton("robert");
             herolist = new List<Hero>();
             enemylist = new List<Enemy>();
-            encounter = new Encounters(herolist,enemylist);
+            
 
         }
         /*
@@ -70,6 +70,7 @@ namespace Test.Library
             herolist.Add(archerTest);
             herolist.Add(knightTest);
             enemylist.Add(orcTest);
+            encounter = new Encounters(herolist,enemylist);
             encounter.DoEncounter();
             Assert.AreEqual(79, archerTest.Health);
             Assert.AreEqual(100, knightTest.Health);
@@ -86,6 +87,7 @@ namespace Test.Library
             herolist.Add(archerTest);
             enemylist.Add(orcTest);
             enemylist.Add(skeletonTest);
+            encounter = new Encounters(herolist,enemylist);
             encounter.DoEncounter();
             Assert.AreEqual(0, archerTest.Health);
             Assert.AreEqual(0, orcTest.Health);
@@ -99,6 +101,7 @@ namespace Test.Library
             herolist.Add(knightTest);
             enemylist.Add(orcTest);
             enemylist.Add(skeletonTest);
+            encounter = new Encounters(herolist,enemylist);
             encounter.DoEncounter();
             Assert.AreEqual(0, archerTest.Health);
             Assert.AreEqual(100,knightTest.Health);
@@ -114,6 +117,7 @@ namespace Test.Library
             herolist.Add(dwarfTest);
             enemylist.Add(orcTest);
             enemylist.Add(orcTest2);
+            encounter = new Encounters(herolist,enemylist);
             encounter.DoEncounter();
             Assert.AreEqual(100,dwarfTest.Health);
         }
