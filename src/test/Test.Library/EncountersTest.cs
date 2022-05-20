@@ -40,6 +40,9 @@ namespace Test.Library
             orcTest2 = new Orc("francisc2");
 
             skeletonTest = new Skeleton("robert");
+            herolist = new List<Hero>();
+            enemylist = new List<Enemy>();
+            encounter = new Encounters(herolist,enemylist);
 
         }
         /*
